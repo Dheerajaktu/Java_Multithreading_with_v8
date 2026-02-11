@@ -1,16 +1,16 @@
-package Synchronize;
+package Synchronise;
 
-public class SynchroniseDemo1 {
+public class LockWithCustomObjects {
     private static int counter1 = 0;
     private static int counter2 = 0;
 
-    //private static final Object lock1 = new Object();
-    //private static final Object lock2 = new Object();
+    private static final Object lock1 = new Object();
+    private static final Object lock2 = new Object();
 
     public static void main(String[] args) {
         Thread t1 = new Thread(() ->{
             for(int i=0;i<10000;i++){
-               increate1();
+                increate1();
             }
         });
 
@@ -34,11 +34,17 @@ public class SynchroniseDemo1 {
         System.out.println("Thread two counter: "+ counter2);
     }
 
-    private static synchronized void increate1(){
-        counter1++;
+    private static  void increate1(){
+        synchronized(lock1){
+            counter1++;
+
+        }
     }
 
-    private static synchronized void increate2(){
-        counter2++;
+    private static  void increate2(){
+        synchronized(lock2){
+            counter2++;
+
+        }
     }
 }

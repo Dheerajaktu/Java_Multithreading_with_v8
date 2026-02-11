@@ -1,4 +1,4 @@
-package Synchronize;
+package Synchronise;
 
 public class SynchroniseDemo {
 
